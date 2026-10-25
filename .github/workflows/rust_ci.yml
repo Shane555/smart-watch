@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "**/README.md"
+    paths:
+      - "firmware/**"
+      - ".github/workflows/**"
+      - "!**/README.md"
   pull_request:
+    paths:
+      - "firmware/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 env:
@@ -17,6 +22,9 @@ jobs:
   rust-checks:
     name: Rust Checks
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware
     strategy:
       fail-fast: false
       matrix:
@@ -37,6 +45,8 @@ jobs:
           components: rust-src rustfmt clippy
       - name: Enable caching
         uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: firmware
       - name: Install ldproxy
         run: cargo install ldproxy
       - name: Run command

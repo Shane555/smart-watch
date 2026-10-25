@@ -1,0 +1,8 @@
+[book]
+title = "Rust Smart Watch — Design Docs"
+authors = ["Shane"]
+language = "en"
+src = "."
+
+[build]
+build-dir = "book"

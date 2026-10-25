@@ -1,4 +1,23 @@
-/.vscode
-/.embuild
-/target
-/Cargo.lock
+# Editor: ignore local settings, but share the workspace settings (rust-analyzer path)
+/.vscode/*
+!/.vscode/settings.json
+
+# Firmware (Rust / ESP-IDF)
+/firmware/.embuild/
+/firmware/target/
+/firmware/Cargo.lock
+
+# KiCad
+*-backups/
+*.kicad_prl
+fp-info-cache
+_autosave-*
+*.lck
+~*.lck
+
+# Docs (mdBook output)
+/docs/book/
+
+# OS
+.DS_Store
+Thumbs.db
